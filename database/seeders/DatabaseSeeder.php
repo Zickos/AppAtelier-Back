@@ -13,11 +13,11 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TypeTravailSeeder::class,
             TypeVehicleSeeder::class,
-            VehicleSeeder::class,
+/*             VehicleSeeder::class,
             RetrofitSeeder::class,
             PhotoSeeder::class,
             PlanningSeeder::class,
-            DemandeSeeder::class,
+            DemandeSeeder::class, */
         ]);
     }
 }

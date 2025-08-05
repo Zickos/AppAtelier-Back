@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\{
 
 Route::post('/login', [AuthController::class, 'login']);
 
+
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 Route::middleware('auth:sanctum')->get('/indexUsers', [UserController::class, 'indexUsers']);
 Route::middleware('auth:sanctum')->get('/indexMecano', [PlanningController::class, 'indexMecano']);
@@ -44,6 +45,10 @@ Route::middleware('auth:sanctum')->group(function () {
         'photos'        => PhotoController::class,
     ]);
 });
+
+Route::options('/{any}', function () {
+    return response()->noContent();
+})->where('any', '.*');
 
 /* Route::apiResources([
         'users'         => UserController::class,

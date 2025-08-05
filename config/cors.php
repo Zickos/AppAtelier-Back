@@ -19,10 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [
-        'https://tzickler.fr',
-        'https://www.tzickler.fr',
-    ],
+    'allowed_origins' => ['*'],
 
 
     'allowed_origins_patterns' => [],

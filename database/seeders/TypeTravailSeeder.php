@@ -10,7 +10,7 @@ class TypeTravailSeeder extends Seeder
 {
     public function run(): void
     {
-        $travails = ['Électrique', 'Carrosserie', 'Logiciel', 'Diagnostic'];
+        $travails = ['Électrique', 'Carrosserie', 'Logiciel', 'Diagnostic', 'Autre'];
 
         foreach ($travails as $travailName) {
             TypeTravail::firstOrCreate(['name' => $travailName]);
