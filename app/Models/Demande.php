@@ -28,6 +28,7 @@ class Demande extends Model
      */
     protected $fillable = [
         'user_id',
+        'retrofit_id',
         'date',
         'commentaire',
         'etat',

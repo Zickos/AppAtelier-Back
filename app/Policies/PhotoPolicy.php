@@ -9,7 +9,8 @@ use Illuminate\Auth\Access\Response;
 class PhotoPolicy
 {
     const ADMIN = 'Admin';
-    const TECHNICIEN = 'Technicien';
+    const MECANICIEN = 'Mécanicien';
+    const SUPERVISEUR = 'Superviseur';
 
     public function viewAny(User $user): bool
     {
@@ -23,16 +24,16 @@ class PhotoPolicy
 
     public function create(User $user): bool
     {
-        return in_array($user->role?->name, [self::ADMIN, self::TECHNICIEN]);
+        return in_array($user->role?->name, [self::ADMIN, self::MECANICIEN, self::SUPERVISEUR]);
     }
 
     public function update(User $user, Photo $photo): bool
     {
-        return in_array($user->role?->name, [self::ADMIN, self::TECHNICIEN]);
+        return in_array($user->role?->name, [self::ADMIN, self::MECANICIEN, self::SUPERVISEUR]);
     }
 
     public function delete(User $user, Photo $photo): bool
     {
-        return $user->role?->name === self::ADMIN;
+        return in_array($user->role?->name, [self::ADMIN, self::SUPERVISEUR]);
     }
 }

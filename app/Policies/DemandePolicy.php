@@ -9,7 +9,9 @@ use Illuminate\Auth\Access\Response;
 class DemandePolicy
 {
     const ADMIN = 'Admin';
-    const TECHNICIEN = 'Technicien';
+    const MECANICIEN = 'Mécanicien';
+    const MAGASINIER = 'Magasinier';
+    const SUPERVISEUR = 'Superviseur';
 
     public function viewAny(User $user): bool
     {
@@ -23,16 +25,16 @@ class DemandePolicy
 
     public function create(User $user): bool
     {
-        return in_array($user->role?->name, [self::ADMIN, self::TECHNICIEN]);
+        return in_array($user->role?->name, [self::ADMIN, self::MECANICIEN, self::MAGASINIER, self::SUPERVISEUR]);
     }
 
-    public function update(User $user, Demande $demande): bool
+    public function update(User $user, Demande $photo): bool
     {
-        return in_array($user->role?->name, [self::ADMIN, self::TECHNICIEN]);
+        return in_array($user->role?->name, [self::ADMIN, self::MECANICIEN, self::MAGASINIER, self::SUPERVISEUR]);
     }
 
-    public function delete(User $user, Demande $demande): bool
+    public function delete(User $user, Demande $photo): bool
     {
-        return $user->role?->name === self::ADMIN;
+        return in_array($user->role?->name, [self::ADMIN, self::SUPERVISEUR]);
     }
 }

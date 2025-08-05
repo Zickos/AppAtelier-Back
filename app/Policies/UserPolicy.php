@@ -10,10 +10,10 @@ class UserPolicy
     /**
      * Voir la liste des utilisateurs
      */
-    
+
     public function viewAny(User $user): bool
     {
-        return $user->role?->name === 'Admin';
+        return $user->role?->name === 'Admin' ||  $user->role?->name === 'Superviseur';
     }
 
     /**
@@ -22,7 +22,7 @@ class UserPolicy
 
     public function view(User $user, User $model): bool
     {
-        return $user->id === $model->id || $user->role?->name === 'Admin';
+        return $user->id === $model->id || $user->role?->name === 'Admin' ||  $user->role?->name === 'Superviseur';
     }
 
     public function create(User $user): bool

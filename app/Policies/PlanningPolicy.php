@@ -8,7 +8,8 @@ use App\Models\User;
 class PlanningPolicy
 {
     const ADMIN = 'Admin';
-    const TECHNICIEN = 'Technicien';
+    const SUPERVISEUR = 'Superviseur';
+
 
     public function viewAny(User $user): bool
     {
@@ -22,16 +23,16 @@ class PlanningPolicy
 
     public function create(User $user): bool
     {
-        return in_array($user->role?->name, [self::ADMIN]);
+        return in_array($user->role?->name, [self::ADMIN, self::SUPERVISEUR]);
     }
 
     public function update(User $user, Planning $planning): bool
     {
-        return in_array($user->role?->name, [self::ADMIN]);
+        return in_array($user->role?->name, [self::ADMIN, self::SUPERVISEUR]);
     }
 
     public function delete(User $user, Planning $planning): bool
     {
-        return $user->role?->name === self::ADMIN;
+        return in_array($user->role?->name, [self::ADMIN, self::SUPERVISEUR]);
     }
 }

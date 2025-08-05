@@ -19,17 +19,17 @@ class VehiclePolicy
 
     public function create(User $user): bool
     {
-        return in_array($user->role?->name, ['Admin']);
+        return in_array($user->role?->name, ['Admin', 'Superviseur']);
     }
 
     public function update(User $user, Vehicle $vehicle): bool
     {
-        return in_array($user->role?->name, ['Admin']);
+        return in_array($user->role?->name, ['Admin', 'Superviseur']);
     }
 
     public function delete(User $user, Vehicle $vehicle): bool
     {
-                return in_array($user->role?->name, ['Admin']);
+                return in_array($user->role?->name, ['Admin', 'Superviseur']);
 
     }
 }

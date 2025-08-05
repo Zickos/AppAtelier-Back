@@ -37,12 +37,11 @@ class DemandeRequest extends FormRequest
             'date'          => 'nullable|date',
             'commentaire'   => 'nullable|string',
             'etat'          => 'boolean',
-            'type' => ['required', Rule::in(['Commande', 'Retrait', 'Maintenance', 'Livraison'])],
-
-            'retrofit_ids'      => 'nullable|array',
-            'retrofit_ids.*'    => 'exists:retrofits,id',
+            'type'          => ['required', Rule::in(['Commande', 'Retrait', 'Maintenance', 'Livraison'])],
+            'retrofit_id'   => 'nullable|exists:retrofits,id', // ✅ ICI
         ];
     }
+
 
     public function messages(): array
     {
@@ -53,8 +52,7 @@ class DemandeRequest extends FormRequest
             'type.in'                => 'Le type de demande est requis.',
             'commentaire.string'       => 'Le commentaire doit être une chaîne de caractères.',
             'etat.boolean'             => 'Le champ "état" doit être vrai ou faux.',
-            'retrofit_ids.array'       => 'Les retrofits doivent être une liste.',
-            'retrofit_ids.*.exists'    => 'Un ou plusieurs retrofits sont invalides.',
+            'retrofit_id.exists' => 'Le retrofit sélectionné est invalide.',
         ];
     }
 }

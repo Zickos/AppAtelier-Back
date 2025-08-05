@@ -8,7 +8,7 @@ use App\Models\Retrofit;
 class RetrofitPolicy
 {
     const ADMIN = 'Admin';
-    const TECHNICIEN = 'Technicien';
+    const SUPERVISEUR = 'Superviseur';
 
     public function viewAny(User $user): bool
     {
@@ -22,16 +22,16 @@ class RetrofitPolicy
 
     public function create(User $user): bool
     {
-        return in_array($user->role?->name, [self::ADMIN]);
+        return in_array($user->role?->name, [self::ADMIN, self::SUPERVISEUR]);
     }
 
     public function update(User $user, Retrofit $retrofit): bool
     {
-        return in_array($user->role?->name, [self::ADMIN]);
+        return in_array($user->role?->name, [self::ADMIN, self::SUPERVISEUR]);
     }
 
     public function delete(User $user, Retrofit $retrofit): bool
     {
-        return $user->role?->name === self::ADMIN;
+        return in_array($user->role?->name, [self::ADMIN, self::SUPERVISEUR]);
     }
 }
