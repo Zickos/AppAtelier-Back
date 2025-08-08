@@ -10,7 +10,8 @@ use App\Models\{
     Planning,
     Demande,
     Photo,
-    User
+    User,
+    VehicleSociete
 };
 
 use App\Policies\{
@@ -19,7 +20,8 @@ use App\Policies\{
     PlanningPolicy,
     DemandePolicy,
     PhotoPolicy,
-    UserPolicy
+    UserPolicy,
+    VehicleSocietePolicy
 };
 
 class AuthServiceProvider extends ServiceProvider
@@ -31,6 +33,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Vehicle::class   => VehiclePolicy::class,
+        VehicleSociete::class   => VehicleSocietePolicy::class,
         Retrofit::class  => RetrofitPolicy::class,
         Planning::class  => PlanningPolicy::class,
         Demande::class   => DemandePolicy::class,

@@ -19,7 +19,29 @@ class UserController extends Controller
         return UserResource::collection($users);
     }
 
-    public function indexUsers (UserRequest $request)
+    public function indexMecanicien(UserRequest $request)
+    {
+        $users = User::with(['role', 'demandes', 'plannings'])
+            ->whereHas('role', function ($query) {
+                $query->where('name', 'Mécanicien');
+            })
+            ->get();
+        return UserResource::collection($users);
+    }
+
+    public function indexMagasinier(UserRequest $request)
+    {
+        $users = User::with(['role', 'demandes', 'plannings'])
+            ->whereHas('role', function ($query) {
+                $query->where('name', 'Magasinier');
+            })
+            ->get();
+
+        return UserResource::collection($users);
+    }
+
+
+    public function indexUsers(UserRequest $request)
     {
         $users = User::with('role')->get();
         return UserResource::collection($users);

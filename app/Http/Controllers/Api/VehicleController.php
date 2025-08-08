@@ -13,7 +13,7 @@ class VehicleController extends Controller
     public function index()
     {
         // Charge avec les relations utiles
-        $vehicles = Vehicle::with(['typeVehicle', 'plannings.users', 'retrofits'])->get();
+        $vehicles = Vehicle::with(['typeVehicle', 'plannings.users', 'retrofits', 'retrofits.photo'])->get();
         return VehicleResource::collection($vehicles);
     }
 

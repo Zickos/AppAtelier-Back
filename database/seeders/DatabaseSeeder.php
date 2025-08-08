@@ -11,13 +11,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             UserSeeder::class,
-            TypeTravailSeeder::class,
+            /* TypeTravailSeeder::class,
             TypeVehicleSeeder::class,
-/*             VehicleSeeder::class,
+            VehicleSeeder::class,
             RetrofitSeeder::class,
             PhotoSeeder::class,
             PlanningSeeder::class,
-            DemandeSeeder::class, */
+            DemandeSeeder::class,
+            VehicleSocieteSeeder::class, */
         ]);
     }
 }
