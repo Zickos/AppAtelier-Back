@@ -14,20 +14,20 @@ return new class extends Migration
         Schema::create('vehicle_societe', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('marque');
-            $table->string('model');
+            $table->string('marque')->nullable();
+            $table->string('model')->nullable();
             $table->string('immatriculation');
-            $table->date('datemec');
-            $table->string('usage');
-            $table->string('site');
-            $table->string('copiecg');
-            $table->string('copieassurance');
-            $table->string('affectation');
-            $table->string('commentaire');
-            $table->date('datect');
-            $table->date('dateprochainct');
-            $table->date('dateentretien');
-            $table->date('dateprochainentretien');
+            $table->date('datemec')->nullable();
+            $table->string('usage')->nullable();
+            $table->string('site')->nullable();
+            $table->string('copiecg')->nullable();
+            $table->string('copieassurance')->nullable();
+            $table->string('affectation')->nullable();
+            $table->string('commentaire')->nullable();
+            $table->date('datect')->nullable();
+            $table->date('dateprochainct')->nullable();
+            $table->date('dateentretien')->nullable();
+            $table->date('dateprochainentretien')->nullable();
             $table->timestamps();
         });
     }
